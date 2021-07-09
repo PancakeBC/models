@@ -1,11 +1,12 @@
 from .validation_models import *
 
-def quick_test(*models, duration=300, temperature=32, v_init=-65):
+def quick_test(*models, duration=300, temperature=32, v_init=-65, dt=0.025):
     from patch import p
 
     p.time
     p.celsius = temperature
     p.v_init = v_init
+    p.dt = dt
     for model in models:
         model.record_soma()
     p.finitialize(v_init)
