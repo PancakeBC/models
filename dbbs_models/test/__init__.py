@@ -1,6 +1,6 @@
 from .validation_models import *
 
-def quick_test(*models, duration=300, temperature=32, v_init=-65, dt=0.025):
+def quick_test(*models, duration=2000, temperature=32, v_init=-65, dt=0.025):
     from patch import p
 
     p.time
@@ -14,7 +14,8 @@ def quick_test(*models, duration=300, temperature=32, v_init=-65, dt=0.025):
 
     return list(p.time), [{
         "Vm": list(model.Vm),
-        "model": model.__class__.__name__
+        "model": model.__class__.__name__,
+        "wwc": list(model.ina_grc)
     } for model in models]
 
 def quick_plot(*args, **kwargs):
